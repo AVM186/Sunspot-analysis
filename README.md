@@ -138,7 +138,9 @@ Note: Update file paths in the code before running (currently set to local direc
 ## Author
 
 Aparna GR
+
 Aswathy Sunil
+
 Aswath Vinod M
 
 BS-MS Physics, IISER Thiruvananthapuram
