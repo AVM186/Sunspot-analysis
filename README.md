@@ -1,86 +1,105 @@
+# Sunspot Cycle Analysis
 
-# Solar Cycle Analysis (PHY5132 Project)
+This repository presents a computational study of solar activity using Sunspot Number (SSN) data and solar flux measurements. The project focuses on understanding temporal patterns in solar cycles, with particular emphasis on Solar Cycle 24 and Solar Cycle 25.
 
-This project analyzes solar activity trends using Sunspot Number (SSN) data and solar flux data, with a focus on comparing Solar Cycle 24 and Solar Cycle 25.
-
-The study applies statistical and computational methods to understand the rising phase behavior, correlations, and significance of differences between solar cycles.
+The workflow is structured as a pipeline: data preprocessing, statistical analysis of solar cycles, and physical visualization using the butterfly diagram.
 
 ---
 
 ## Objectives
 
+* Analyze long-term trends in sunspot activity
 * Compare the rising phases of Solar Cycle 24 and 25
-* Perform linear regression analysis to estimate growth trends
+* Quantify growth using regression techniques
 * Measure similarity between cycles using correlation
-* Test statistical significance using hypothesis testing
-* Analyze residuals and deviations
-* Explore relationships between sunspot numbers and solar flux
+* Evaluate statistical significance of observed differences
+* Study the relationship between sunspot number and solar flux
+* Visualize spatiotemporal evolution of sunspots using the butterfly diagram
+
+---
+
+## Repository Structure
+
+```
+sunspot-cycle-analysis/
+│
+├── sunspot_data_preprocessing_and_statistics.ipynb
+├── solar_cycle_24_25_comparative_analysis.ipynb
+├── sunspot_butterfly_diagram_analysis.ipynb
+│
+├── data/
+│   ├── SN_m_tot_V2.0.csv
+│   └── fluxtable.csv
+│
+└── README.md
+```
 
 ---
 
 ## Data Sources
 
-* Sunspot Number (SSN) Dataset
+* **Sunspot Number (SSN):**
   Monthly total sunspot numbers from SILSO
 
-* Solar Flux Dataset
-  Flux measurements (radio/solar activity proxy)
+* **Solar Flux Data:**
+  Radio flux measurements as a proxy for solar activity
 
-Note: Update file paths in the code before running (currently set to local directories).
+> Note: Update file paths in the notebooks before execution.
 
 ---
 
-## Methods & Analysis
+## Methodology
 
-### 1. Data Preprocessing
+### 1. Data Preprocessing & Exploration
 
-* Load CSV datasets using `pandas`
-* Clean and format time-series data
-* Extract relevant cycles and align timelines
+* Import and clean datasets using `pandas`
+* Construct time-series format
+* Handle missing values and align datasets
 
-### 2. Rising Phase Analysis
+### 2. Solar Cycle Comparison
 
-* First 60 months of each cycle considered
-* Linear regression applied:
+* Extract and align rising phases (first ~60 months)
+* Apply linear regression:
 
   * Slope → growth rate
   * Intercept → baseline activity
+* Compute Pearson correlation to compare cycle shapes
 
-### 3. Correlation Analysis
+### 3. Statistical Analysis
 
-* Pearson correlation coefficient used to compare shape similarity between Cycle 24 and 25
+* Perform hypothesis testing (t-test)
+* Compare distributions using chi-square test
+* Evaluate model performance using RMSE
 
-### 4. Statistical Testing
-
-* T-test to check if the two cycles differ significantly
-* Chi-square test (manual implementation) for distribution comparison
-
-### 5. Error & Residual Analysis
-
-* RMSE (Root Mean Square Error) used to evaluate fit quality of regression models
-
-### 6. Flux vs Sunspot Comparison
+### 4. Flux–Sunspot Relationship
 
 * Merge SSN and flux datasets
-* Study relationships between magnetic activity (sunspots) and solar emission (flux)
+* Analyze correlation between magnetic activity and solar emission
+
+### 5. Butterfly Diagram Analysis
+
+* Visualize sunspot latitude vs time
+* Capture migration of solar activity bands across cycles
+* Provide a physical interpretation of solar cycle evolution
 
 ---
 
 ## Tools & Libraries
 
-* `numpy` – numerical computations
-* `pandas` – data handling
-* `matplotlib` – visualization
-* `scipy.stats` – statistical analysis
+* `numpy` — numerical computation
+* `pandas` — data processing
+* `matplotlib` — visualization
+* `scipy.stats` — statistical analysis
 
 ---
 
 ## Key Insights
 
-* Solar Cycle 25 shows comparable but distinct growth behavior relative to Cycle 24
-* Correlation varies depending on phase alignment
-* Statistical tests help determine whether observed differences are significant
-* Flux data provides an additional physical validation of solar activity trends
+* Solar Cycle 25 exhibits growth behavior comparable to, but distinct from, Cycle 24
+* Correlation between cycles depends strongly on phase alignment
+* Statistical tests provide insight into the significance of differences
+* Solar flux acts as an independent validation of activity trends
+* Butterfly diagrams reveal the latitudinal migration of sunspot activity over time
 
 ---
 
@@ -89,8 +108,8 @@ Note: Update file paths in the code before running (currently set to local direc
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/solar-cycle-analysis.git
-   cd solar-cycle-analysis
+   git clone https://github.com/your-username/sunspot-cycle-analysis.git
+   cd sunspot-cycle-analysis
    ```
 
 2. Install dependencies:
@@ -99,14 +118,14 @@ Note: Update file paths in the code before running (currently set to local direc
    pip install numpy pandas matplotlib scipy
    ```
 
-3. Update file paths in the notebook:
+3. Update dataset paths inside notebooks:
 
    ```python
-   file_path = 'path_to/SN_m_tot_V2.0.csv'
-   flux_file_path = 'path_to/fluxtable.csv'
+   ssn_path = "path_to/SN_m_tot_V2.0.csv"
+   flux_path = "path_to/fluxtable.csv"
    ```
 
-4. Run the Jupyter Notebook:
+4. Launch Jupyter Notebook:
 
    ```bash
    jupyter notebook
@@ -114,35 +133,20 @@ Note: Update file paths in the code before running (currently set to local direc
 
 ---
 
-## Project Structure
+## Future Work
 
-```
-├── PHY5132 Project.ipynb   # Main analysis notebook
-├── data/
-│   ├── SN_m_tot_V2.0.csv   # Sunspot data
-│   └── fluxtable.csv       # Flux data
-├── README.md
-```
+* Extend analysis to multiple historical solar cycles
+* Apply time-series forecasting models (ARIMA, ML approaches)
+* Perform spectral analysis (Fourier / Wavelet methods)
+* Develop interactive visualizations
 
 ---
 
-## Future Improvements
+## Authors
 
-* Extend analysis to earlier solar cycles
-* Apply time-series forecasting models (ARIMA, ML)
-* Include spectral analysis (Fourier/Wavelets)
-* Improve visualization with interactive plots
+* Aparna GR
+* Aswathy Sunil
+* Aswath Vinod M
 
----
-
-## Author
-
-Aparna GR
-
-Aswathy Sunil
-
-Aswath Vinod M
-
-BS-MS Physics, IISER Thiruvananthapuram
-
----
+BS-MS Physics
+IISER Thiruvananthapuram
